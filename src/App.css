@@ -1,6 +1,25 @@
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	border-radius: unset !important;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border-radius: unset !important;
+}
+
+.ant-table-body {
+    scrollbar-width: auto;
+    scrollbar-color: auto;
+}
+
+/* width */
+.ant-table-body::-webkit-scrollbar {
+    width: 4px;
+}
+
+.ant-table-body::-webkit-scrollbar-track {
+    background-color: #e1e6e6;
+}
+
+.ant-table-body::-webkit-scrollbar-thumb {
+    border-radius: 6px;
+    background-color: green;
 }

@@ -1,5 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
-import { Button, Form, Image, Input, Layout, Space, Table } from "antd";
+import {
+    Button,
+    Form,
+    Image,
+    Input,
+    Layout,
+    Space,
+    Table,
+    Typography,
+} from "antd";
 import { ColumnsType } from "antd/es/table";
 import { useMemo, useState } from "react";
 import styled from "styled-components";
@@ -9,11 +18,11 @@ import SelectCurrencies from "../../components/SelectCurrencies";
 import { CoinMarket, ParamsCoinMarket } from "../../interfaces";
 import { formatCost } from "../../utils";
 import { defaultIds } from "../../constants";
+import { Header } from "antd/es/layout/layout";
 
 const LayoutContainer = styled(Layout)`
     height: 100vh;
     display: flex;
-    padding: 24px;
     background-color: white;
 `;
 
@@ -169,42 +178,76 @@ function Home() {
 
     return (
         <LayoutContainer>
-            <Space
+            <Header
                 style={{
-                    padding: "5px",
-                    border: "1px solid #f0f0f0",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    backgroundColor: "#26d962",
+                    position: "sticky",
+                    top: 0,
+                    zIndex: 999,
+                    width: "100%",
+                    boxShadow: "1px 5px 2px -4px rgba(69,145,79,1)",
+                    height: "50px",
                 }}
             >
-                <Form
-                    layout="inline"
-                    onFinish={(value) => {
-                        setParams(value);
+                <Typography
+                    style={{
+                        fontWeight: 600,
+                        fontSize: "1.6rem",
+                        color: "white",
                     }}
                 >
-                    <Form.Item name="ids">
-                        <Input placeholder="Name" />
-                    </Form.Item>
-                    <SelectCurrencies />
-                    <SelectCategory />
-                    <Form.Item>
-                        <Button htmlType="submit">Search</Button>
-                    </Form.Item>
-                </Form>
-            </Space>
-            <Table
-                bordered
-                size="small"
-                loading={isLoading}
-                columns={columns as any}
-                dataSource={finalData}
-                pagination={{
-                    size: "small",
-                    position: ["bottomCenter"],
-                    pageSize: 50,
-                    pageSizeOptions: [10, 20, 50, 100],
+                    OBOT AI AGENT
+                </Typography>
+            </Header>
+            <Layout
+                style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    padding: "24px",
+                    backgroundColor: "white",
                 }}
-                scroll={{ x: "max-content", y: "80vh" }}
-            />
+            >
+                <Space
+                    style={{
+                        padding: "5px",
+                        border: "1px solid #f0f0f0",
+                        borderBottom: "unset",
+                    }}
+                >
+                    <Form
+                        layout="inline"
+                        onFinish={(value) => {
+                            setParams(value);
+                        }}
+                    >
+                        <Form.Item name="ids">
+                            <Input placeholder="Name" />
+                        </Form.Item>
+                        <SelectCurrencies />
+                        <SelectCategory />
+                        <Form.Item>
+                            <Button htmlType="submit">Search</Button>
+                        </Form.Item>
+                    </Form>
+                </Space>
+                <Table
+                    bordered
+                    size="small"
+                    loading={isLoading}
+                    columns={columns as any}
+                    dataSource={finalData}
+                    pagination={{
+                        size: "small",
+                        position: ["bottomCenter"],
+                        pageSize: 50,
+                        pageSizeOptions: [10, 20, 50, 100],
+                    }}
+                    scroll={{ x: "max-content", y: "80vh" }}
+                />
+            </Layout>
         </LayoutContainer>
     );
 }

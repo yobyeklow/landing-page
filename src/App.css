@@ -13,6 +13,7 @@
 /* width */
 .ant-table-body::-webkit-scrollbar {
     width: 4px;
+    height: 4px;
 }
 
 .ant-table-body::-webkit-scrollbar-track {
@@ -21,5 +22,5 @@
 
 .ant-table-body::-webkit-scrollbar-thumb {
     border-radius: 6px;
-    background-color: green;
+    background-color: gray;
 }
